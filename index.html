@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gemini Dashboard</title>
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- MOBILE OVERLAY & HAMBURGER -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- SIDEBAR NAVIGATION -->
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <i class="fa-solid fa-graduation-cap brand-icon"></i>
+      <span class="brand-name">UniPulse</span>
+      <button class="close-sidebar-btn" id="closeSidebarBtn"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+
+    <nav class="nav-menu">
+      <a href="#" class="nav-link active" data-section="dashboard">
+        <i class="fa-solid fa-house"></i><span>Dashboard</span>
+      </a>
+      <a href="#" class="nav-link" data-section="announcements">
+        <i class="fa-solid fa-bullhorn"></i><span>Announcements</span>
+      </a>
+      <a href="#" class="nav-link" data-section="events">
+        <i class="fa-solid fa-calendar-days"></i><span>Events</span>
+      </a>
+      <a href="#" class="nav-link" data-section="timetable">
+        <i class="fa-solid fa-clock"></i><span>Timetable</span>
+      </a>
+      <a href="#" class="nav-link" data-section="attendance">
+        <i class="fa-solid fa-chart-pie"></i><span>Attendance</span>
+      </a>
+      <a href="#" class="nav-link" data-section="assignments">
+        <i class="fa-solid fa-pen-to-square"></i><span>Assignments</span>
+      </a>
+      <a href="#" class="nav-link" data-section="clubs">
+        <i class="fa-solid fa-people-group"></i><span>Clubs</span>
+      </a>
+      <a href="#" class="nav-link" data-section="contacts">
+        <i class="fa-solid fa-address-book"></i><span>Campus Contacts</span>
+      </a>
+      <a href="#" class="nav-link" data-section="campus-map">
+        <i class="fa-solid fa-map-location-dot"></i><span>Campus Map</span>
+      </a>
+      <a href="#" class="nav-link" data-section="profile">
+        <i class="fa-solid fa-user"></i><span>Profile</span>
+      </a>
+    </nav>
+  </aside>
+
+  <!-- MAIN WRAPPER -->
+  <div class="main-wrapper">
+    
+    <!-- HEADER -->
+    <header class="top-header">
+      <div class="header-left">
+        <button class="mobile-toggle-btn" id="mobileToggleBtn">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <div class="search-box">
+          <i class="fa-solid fa-magnifying-glass search-icon"></i>
+          <input type="text" id="globalSearch" placeholder="Search events, notices, clubs, contacts...">
+        </div>
+      </div>
+
+      <div class="header-right">
+        <!-- Theme Toggle -->
+        <button class="icon-btn theme-btn" id="themeToggle" title="Toggle Theme">
+          <i class="fa-solid fa-moon" id="themeIcon"></i>
+        </button>
+
+        <!-- Notification Bell -->
+        <div class="notification-wrapper">
+          <button class="icon-btn" id="notifBell" title="Notifications">
+            <i class="fa-solid fa-bell"></i>
+            <span class="badge" id="notifBadge">3</span>
+          </button>
+
+          <!-- Notification Dropdown -->
+          <div class="notification-panel" id="notifPanel">
+            <div class="notif-header">
+              <h3>Notifications</h3>
+              <button id="markAllReadBtn" class="text-btn">Mark all read</button>
+            </div>
+            <div class="notif-list" id="notifList">
+              <div class="notif-item unread">
+                <i class="fa-solid fa-circle-exclamation notif-icon urgent"></i>
+                <div class="notif-info">
+                  <p>Semester Examination Notice published</p>
+                  <small>10 mins ago</small>
+                </div>
+              </div>
+              <div class="notif-item unread">
+                <i class="fa-solid fa-pen-to-square notif-icon"></i>
+                <div class="notif-info">
+                  <p>Assignment due tomorrow: Web Development Project</p>
+                  <small>2 hours ago</small>
+                </div>
+              </div>
+              <div class="notif-item unread">
+                <i class="fa-solid fa-laptop-code notif-icon"></i>
+                <div class="notif-info">
+                  <p>Coding Club Hackathon registration is now live!</p>
+                  <small>Yesterday</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Header Profile Quick Badge -->
+        <div class="header-user" id="headerUserProfile">
+          <div class="avatar" id="headerAvatar">AS</div>
+          <span class="user-name" id="headerUserName">Alex Smith</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- CONTENT BODY -->
+    <main class="content-area">
+
+      <!-- 1. DASHBOARD HOME SECTION -->
+      <section id="dashboard" class="content-section active">
+        <div class="welcome-banner">
+          <div class="welcome-text">
+            <h2><span id="greetingTime">Good Day</span>, <span id="dashStudentName">Alex Smith</span> 👋</h2>
+            <p>Welcome back to your academic portal. Here is your overview for today.</p>
+            <span class="current-date-badge" id="currentDateDisplay"><i class="fa-regular fa-calendar"></i> Loading date...</span>
+          </div>
+        </div>
+
+        <!-- Summary Metric Cards -->
+        <div class="grid-4">
+          <div class="stat-card">
+            <div class="stat-icon bg-blue"><i class="fa-solid fa-book-open"></i></div>
+            <div class="stat-details">
+              <h3>4 Classes</h3>
+              <p>Today's Schedule</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon bg-green"><i class="fa-solid fa-user-check"></i></div>
+            <div class="stat-details">
+              <h3>85.7%</h3>
+              <p>Overall Attendance</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon bg-purple"><i class="fa-solid fa-trophy"></i></div>
+            <div class="stat-details">
+              <h3>3 Events</h3>
+              <p>Registered This Month</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon bg-orange"><i class="fa-solid fa-clock-rotate-left"></i></div>
+            <div class="stat-details">
+              <h3>2 Pending</h3>
+              <p>Assignments Due</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Actions Panel -->
+        <div class="card mt-24">
+          <div class="card-header">
+            <h3><i class="fa-solid fa-bolt text-accent"></i> Quick Actions</h3>
+          </div>
+          <div class="quick-actions-grid">
+            <button class="action-btn" onclick="navigateTo('timetable')"><i class="fa-solid fa-clock"></i> View Timetable</button>
+            <button class="action-btn" onclick="navigateTo('attendance')"><i class="fa-solid fa-chart-pie"></i> Check Attendance</button>
+            <button class="action-btn" onclick="navigateTo('events')"><i class="fa-solid fa-calendar-days"></i> View Events</button>
+            <button class="action-btn" onclick="navigateTo('clubs')"><i class="fa-solid fa-people-group"></i> Join Clubs</button>
+            <button class="action-btn" onclick="navigateTo('contacts')"><i class="fa-solid fa-address-book"></i> Campus Contacts</button>
+          </div>
+        </div>
+
+        <!-- Today's Schedule Overview -->
+        <div class="card mt-24">
+          <div class="card-header">
+            <h3><i class="fa-solid fa-calendar-day text-accent"></i> Today's Schedule Overview</h3>
+            <button class="text-btn" onclick="navigateTo('timetable')">Full Timetable &rarr;</button>
+          </div>
+          <div class="schedule-list" id="dashScheduleList">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. ANNOUNCEMENTS SECTION -->
+      <section id="announcements" class="content-section">
+        <div class="section-header">
+          <div>
+            <h2>Campus Announcements</h2>
+            <p>Stay updated with official college notices and information.</p>
+          </div>
+        </div>
+
+        <!-- Filters & Search Controls -->
+        <div class="filter-bar card">
+          <div class="filter-group">
+            <label><i class="fa-solid fa-filter"></i> Category:</label>
+            <select id="announcementCategoryFilter" class="form-control">
+              <option value="all">All Categories</option>
+              <option value="Exam">Examinations</option>
+              <option value="Academic">Academic</option>
+              <option value="General">General</option>
+              <option value="Scholarship">Scholarship</option>
+            </select>
+          </div>
+          <div class="filter-group search-filter">
+            <input type="text" id="announcementSearch" class="form-control" placeholder="Search notices by keyword...">
+          </div>
+        </div>
+
+        <div class="grid-2 mt-24" id="announcementsGrid">
+          <!-- Rendered dynamically -->
+        </div>
+      </section>
+
+      <!-- 3. EVENTS SECTION -->
+      <section id="events" class="content-section">
+        <div class="section-header">
+          <div>
+            <h2>Campus Events & Activities</h2>
+            <p>Explore and register for upcoming fests, workshops, and competitions.</p>
+          </div>
+        </div>
+
+        <!-- Events Filter -->
+        <div class="filter-bar card">
+          <div class="filter-group">
+            <label><i class="fa-solid fa-tags"></i> Filter Category:</label>
+            <div class="btn-group" id="eventCategoryButtons">
+              <button class="btn btn-sm btn-outline active" data-category="all">All</button>
+              <button class="btn btn-sm btn-outline" data-category="Technical">Technical</button>
+              <button class="btn btn-sm btn-outline" data-category="Cultural">Cultural</button>
+              <button class="btn btn-sm btn-outline" data-category="Sports">Sports</button>
+              <button class="btn btn-sm btn-outline" data-category="Workshop">Workshops</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-3 mt-24" id="eventsGrid">
+          <!-- Rendered dynamically -->
+        </div>
+      </section>
+
+      <!-- 4. TIMETABLE SECTION -->
+      <section id="timetable" class="content-section">
+        <div class="section-header">
+          <div>
+            <h2>Weekly Timetable</h2>
+            <p>Your class schedule and lab sessions.</p>
+          </div>
+        </div>
+
+        <!-- Day Selector Tabs -->
+        <div class="tabs-container">
+          <button class="tab-btn active" data-day="Monday">Monday</button>
+          <button class="tab-btn" data-day="Tuesday">Tuesday</button>
+          <button class="tab-btn" data-day="Wednesday">Wednesday</button>
+          <button class="tab-btn" data-day="Thursday">Thursday</button>
+          <button class="tab-btn" data-day="Friday">Friday</button>
+          <button class="tab-btn" data-day="Saturday">Saturday</button>
+        </div>
+
+        <div class="card mt-16">
+          <div class="table-responsive">
+            <table class="custom-table">
+              <thead>
+                <tr>
+                  <th>Time Slot</th>
+                  <th>Subject</th>
+                  <th>Faculty</th>
+                  <th>Location</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="timetableTableBody">
+                <!-- Rendered dynamically -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. ATTENDANCE SECTION -->
+      <section id="attendance" class="content-section">
+        <div class="section-header">
+          <div>
+            <h2>Attendance Tracker</h2>
+            <p>Monitor your course attendance and requirements.</p>
+          </div>
+        </div>
+
+        <!-- Overall Warning Banner (If applicable) -->
+        <div class="alert alert-warning card mb-24" id="attendanceWarning">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+          <div>
+            <strong>Attention Required!</strong> You have subject(s) with attendance below 75%. Please attend upcoming lectures to avoid condonation issues.
+          </div>
+        </div>
+
+        <div class="grid-2" id="attendanceGrid">
+          <!-- Rendered dynamically -->
+        </div>
+      </section>
+
+      <!-- 6. ASSIGNMENTS SECTION -->
+      <section id="assignments" class="content-section">
+        <div class="section-header">
+          <div>
+            <h2>Assignments & Projects</h2>
+            <p>Keep track of pending and submitted coursework.</p>
+          </div>
+        </div>
+
+        <div class="grid-2" id="assignmentsGrid">
+          <!-- Rendered dynamically -->
+        </div>
+      </section>
+
+      <!-- 7. CLUBS SECTION -->
+      <section id="clubs" class="content-section">
+        <div class="section-header">
+          <div>
+            <h2>Student Clubs & Communities</h2>
+            <p>Enhance your skills and network by joining campus societies.</p>
+          </div>
+        </div>
+
+        <div class="grid-3" id="clubsGrid">
+          <!-- Rendered dynamically -->
+        </div>
+      </section>
+
+      <!-- 8. CAMPUS CONTACTS SECTION -->
+      <section id="contacts" class="content-section">
+        <div class="section-header">
+          <div>
+            <h2>Campus Directory & Emergency Contacts</h2>
+            <p>Important departmental numbers and office locations.</p>
+          </div>
+        </div>
+
+        <div class="filter-bar card mb-24">
+          <input type="text" id="contactSearch" class="form-control" placeholder="Search contacts by department or keyword...">
+        </div>
+
+        <div class="grid-3" id="contactsGrid">
+          <!-- Rendered dynamically -->
+        </div>
+      </section>
+
+      <!-- 9. CAMPUS MAP SECTION -->
+      <section id="campus-map" class="content-section">
+        <div class="section-header">
+          <div>
+            <h2>Interactive Campus Map</h2>
+            <p>Click on any landmark below to view details and facilities.</p>
+          </div>
+        </div>
+
+        <div class="grid-layout-map">
+          <!-- Interactive Graphic Grid -->
+          <div class="map-graphic card">
+            <div class="map-grid">
+              <button class="map-node" data-loc="gate"><i class="fa-solid fa-torii-gate"></i> Main Gate</button>
+              <button class="map-node" data-loc="admin"><i class="fa-solid fa-building-columns"></i> Admin Block</button>
+              <button class="map-node" data-loc="library"><i class="fa-solid fa-book"></i> Central Library</button>
+              <button class="map-node" data-loc="labs"><i class="fa-solid fa-desktop"></i> Computer Labs</button>
+              <button class="map-node" data-loc="canteen"><i class="fa-solid fa-utensils"></i> Cafeteria</button>
+              <button class="map-node" data-loc="auditorium"><i class="fa-solid fa-masks-theater"></i> Auditorium</button>
+              <button class="map-node" data-loc="sports"><i class="fa-solid fa-volleyball"></i> Sports Ground</button>
+            </div>
+          </div>
+
+          <!-- Info Details Card -->
+          <div class="card map-details-card" id="mapDetailsCard">
+            <div class="map-details-placeholder" id="mapPlaceholder">
+              <i class="fa-solid fa-location-dot map-icon-placeholder"></i>
+              <h3>Select a location from the map</h3>
+              <p>Click any landmark pin on the grid to view opening hours and descriptions.</p>
+            </div>
+            <div class="map-details-content hidden" id="mapContent">
+              <span class="badge badge-accent" id="mapTag">Facility</span>
+              <h3 id="mapTitle" class="mt-8">Location Title</h3>
+              <p id="mapDescription" class="mt-8 text-muted">Description text here...</p>
+              <hr class="divider">
+              <div class="map-meta">
+                <p><strong><i class="fa-solid fa-clock"></i> Hours:</strong> <span id="mapHours">8:00 AM - 8:00 PM</span></p>
+                <p><strong><i class="fa-solid fa-map-pin"></i> Zone:</strong> <span id="mapZone">North Campus</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 11. STUDENT PROFILE SECTION -->
+      <section id="profile" class="content-section">
+        <div class="section-header">
+          <div>
+            <h2>Student Profile</h2>
+            <p>Manage your account personal information.</p>
+          </div>
+        </div>
+
+        <div class="card profile-card">
+          <div class="profile-header-bg"></div>
+          <div class="profile-body">
+            <div class="profile-avatar-large" id="profileAvatarLarge">AS</div>
+            <div class="profile-title">
+              <h2 id="profName">Alex Smith</h2>
+              <p id="profCourse" class="text-muted">B.Tech Computer Science & Engineering</p>
+            </div>
+            <button class="btn btn-primary btn-sm" id="editProfileBtn"><i class="fa-solid fa-pen"></i> Edit Profile</button>
+          </div>
+
+          <hr class="divider">
+
+          <div class="profile-details-grid">
+            <div class="detail-item">
+              <label>Student ID</label>
+              <p id="profId">CS-2024-8891</p>
+            </div>
+            <div class="detail-item">
+              <label>Department</label>
+              <p id="profDept">School of Computing</p>
+            </div>
+            <div class="detail-item">
+              <label>Current Semester</label>
+              <p id="profSem">Semester 5</p>
+            </div>
+            <div class="detail-item">
+              <label>Email Address</label>
+              <p id="profEmail">alex.smith@college.edu</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="main-footer">
+      <div class="footer-content">
+        <p>&copy; 2026 Unified College Dashboard (UniPulse). All rights reserved.</p>
+        <div class="footer-links">
+          <a href="#" onclick="alert('Simulated: Navigating to Official College Portal')">College Website</a>
+          <a href="#" onclick="navigateTo('contacts')">Student Support</a>
+          <a href="#" onclick="navigateTo('contacts')">Help Desk</a>
+          <a href="#" onclick="alert('Simulated Privacy Policy Statement')">Privacy Policy</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- REUSABLE MODAL CONTAINER -->
+  <div class="modal-overlay" id="appModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="modalTitle">Modal Header</h3>
+        <button class="modal-close-btn" id="modalCloseBtn">&times;</button>
+      </div>
+      <div class="modal-body" id="modalBody">
+        <!-- Dynamic content filled by JS -->
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
